@@ -6,8 +6,16 @@ use PhutureProof\SessionManager\Interfaces\SessionToStorage;
 
 class FileSystem implements SessionToStorage
 {
+    /**
+     * @var string $_savePath
+     */
     private $_savePath;
 
+    /**
+     * FileSystem constructor.
+     *
+     * @param string $savePath
+     */
     public function __construct($savePath)
     {
         $this->_savePath = $savePath;
@@ -17,6 +25,11 @@ class FileSystem implements SessionToStorage
         }
     }
 
+    /**
+     * @param string $session_id
+     *
+     * @return bool
+     */
     public function readSessionData($session_id)
     {
         $file = $this->_savePath . "/{$session_id}.session";
@@ -27,6 +40,11 @@ class FileSystem implements SessionToStorage
         return true;
     }
 
+    /**
+     * @param string $session_id
+     *
+     * @return bool
+     */
     public function checkSessionData($session_id)
     {
         $file = $this->_savePath . "/{$session_id}.session";
@@ -36,6 +54,11 @@ class FileSystem implements SessionToStorage
         return true;
     }
 
+    /**
+     * @param string $session_id
+     *
+     * @return bool
+     */
     public function deleteSessionData($session_id)
     {
         $file = $this->_savePath . "/{$session_id}.session";
@@ -46,6 +69,12 @@ class FileSystem implements SessionToStorage
         return true;
     }
 
+    /**
+     * @param string $session_id
+     * @param string $session_data
+     *
+     * @return bool
+     */
     public function writeSessionData($session_id, $session_data)
     {
         $file = $this->_savePath . "/{$session_id}.session";
@@ -53,6 +82,9 @@ class FileSystem implements SessionToStorage
         return true;
     }
 
+    /**
+     * @return bool
+     */
     public function close()
     {
         return true;

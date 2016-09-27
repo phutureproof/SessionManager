@@ -11,4 +11,4 @@ $sessionManager = new SessionManager($driver);
 session_set_save_handler($sessionManager);
 session_start();
 
-$_SESSION['Im going to change this'] = 'lol';
+$_SESSION['app-start-time'] = (new DateTime('now'))->format('YmdHis');
