@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Concrete implementation of our SessionToStorage interface
- */
-
 namespace PhutureProof\SessionManager\Drivers;
 
 use PhutureProof\SessionManager\Interfaces\SessionToStorage;
@@ -20,6 +16,7 @@ class MySQL implements SessionToStorage
     public function close()
     {
         unset($this->database);
+        return true;
     }
 
     public function readSessionData($session_id)
