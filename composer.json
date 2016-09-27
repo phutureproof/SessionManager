@@ -1,0 +1,21 @@
+{
+    "name": "phutureproof/sessionmanager",
+    "description": "Manages PHP sessions",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dale",
+            "email": "dale.phutureproof@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+
+    },
+    "autoload": {
+        "psr-4": {
+            "PhutureProof\\": "src/"
+        }
+    }
+}
