@@ -5,11 +5,11 @@ require_once("./../vendor/autoload.php");
 use PhutureProof\SessionManager\Drivers\MySQL as StorageSolution;
 use PhutureProof\SessionManager;
 
-$storageSolutionDSN = 'mysql:dbname=sessionmanager;host=localhost';
+$databaseDSN = 'mysql:dbname=sessionmanager;host=localhost';
 
-$database       = new PDO($storageSolutionDSN, 'root', '');
-$driver         = new StorageSolution($database);
-$sessionManager = new SessionManager($driver);
+$database        = new PDO($databaseDSN, 'root', '');
+$storageSolution = new StorageSolution($database);
+$sessionManager  = new SessionManager($storageSolution);
 
 session_set_save_handler($sessionManager);
 
