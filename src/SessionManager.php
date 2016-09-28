@@ -47,7 +47,7 @@ class SessionManager implements \SessionHandlerInterface
      */
     public function gc($maxlifetime)
     {
-        return true;
+        return $this->_storage->garbageCollection($maxlifetime);
     }
 
     /**

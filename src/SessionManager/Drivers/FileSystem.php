@@ -83,6 +83,14 @@ class FileSystem implements SessionToStorage
     }
 
     /**
+     * @param $maxLifetime
+     */
+    public function garbageCollection($maxLifetime)
+    {
+        return true;
+    }
+
+    /**
      * @return bool
      */
     public function close()

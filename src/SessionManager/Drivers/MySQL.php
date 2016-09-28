@@ -27,8 +27,15 @@ class MySQL implements SessionToStorage
     public function close()
     {
         unset($this->_database);
+
         return true;
     }
+
+    public function garbageCollection($maxLifetime)
+    {
+        return true;
+    }
+
 
     /**
      * @param $session_id
