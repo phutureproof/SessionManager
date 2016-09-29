@@ -2,17 +2,21 @@
 
 require_once("./../vendor/autoload.php");
 
-use PhutureProof\SessionManager\Drivers\FileSystem as StorageSolution;
-use PhutureProof\SessionManager;
+/**
+ * Test factory
+ */
+use PhutureProof\SessionManager\Factories\SessionManagerFactory;
 
-$databaseDSN = 'mysql:dbname=sessionmanager;host=localhost';
-
-$sessionSaveDirectory = __DIR__ . '/testsStorage';
-$storageSolution = new StorageSolution($sessionSaveDirectory);
-$sessionManager  = new SessionManager($storageSolution);
-
-session_set_save_handler($sessionManager);
-
+$config = [
+    'driver' => 'mysql',
+    'hostname' => 'localhost',
+    'database' => 'sessionmanager',
+    'username' => 'root',
+    'password' => '',
+    'savePath' => __DIR__ . '/testsStorage'
+];
+$sessionManager = SessionManagerFactory::withMySQL($config);
+session_set_save_handler($sessionManager, true);
 session_start();
 
 $_SESSION['app-start-time'] = (new DateTime('now'))->format('YmdHis');
