@@ -7,13 +7,13 @@ require_once("./../vendor/autoload.php");
  */
 use PhutureProof\SessionManager\Factories\SessionManagerFactory;
 
-$config = [
-    'driver' => 'mysql',
+$config         = [
+    'driver'   => 'mysql',
     'hostname' => 'localhost',
     'database' => 'sessionmanager',
     'username' => 'root',
     'password' => '',
-    'savePath' => __DIR__ . '/testsStorage'
+    'savePath' => __DIR__ . '/testsStorage',
 ];
 $sessionManager = SessionManagerFactory::withMySQL($config);
 session_set_save_handler($sessionManager, true);

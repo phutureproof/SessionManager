@@ -19,7 +19,7 @@ class FileSystem implements SessionToStorage
     public function __construct($savePath)
     {
         $this->_savePath = $savePath;
-        
+
         if ( ! is_dir($this->_savePath)) {
             mkdir($this->_savePath, 0777, true);
         }
@@ -37,6 +37,7 @@ class FileSystem implements SessionToStorage
             return false;
         }
         file_get_contents($file);
+
         return true;
     }
 
@@ -51,6 +52,7 @@ class FileSystem implements SessionToStorage
         if ( ! file_exists($file)) {
             return false;
         }
+
         return true;
     }
 
@@ -66,6 +68,7 @@ class FileSystem implements SessionToStorage
             return false;
         }
         unlink($file);
+
         return true;
     }
 
@@ -79,6 +82,7 @@ class FileSystem implements SessionToStorage
     {
         $file = $this->_savePath . "/{$session_id}.session";
         file_put_contents($file, $session_data);
+
         return true;
     }
 
